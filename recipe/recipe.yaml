@@ -1,19 +1,18 @@
 schema_version: 1
 
 context:
-  name: pytest-dependency
-  version: "0.5.1"
+  version: 0.6.1
 
 package:
-  name: ${{ name|lower }}
+  name: pytest-dependency
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: c2a892906192663f85030a6ab91304e508e546cddfe557d692d61ec57a1d946b
+- url: https://files.pythonhosted.org/packages/source/p/pytest-dependency/pytest_dependency-${{ version }}.tar.gz
+  sha256: 246c24d2a5fc743a942cec4408853640e56a05ba58d46e5b213a1d4b738a2464
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -26,6 +25,7 @@ requirements:
   run:
     - pytest >=3.6.0
     - python >=${{ python_min }}
+    - setuptools
 
 tests:
   - python:
